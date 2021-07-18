@@ -4,11 +4,9 @@ import one.digitalinnovation.personapi.dto.MessageResponseDTO;
 import one.digitalinnovation.personapi.entity.Person;
 import one.digitalinnovation.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PersonService {
 
     private PersonRepository personRepository;
@@ -18,8 +16,6 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createPerson(Person person){
         Person savedPerson = personRepository.save(person);
         return MessageResponseDTO
